@@ -1,24 +1,7 @@
-# README
+# Private Events
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Project from The Odin Project's Ruby on Rails track
 
-Things you may want to cover:
+A similar site to a private Eventbrite which allows users to create events and then manage user signups. Users can create events and send invitations and parties.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The focus of this project is to model many-to-many relationships in a system.
