@@ -8,3 +8,21 @@
     <p>Date: <%= event.date %></p>
   </div>
 <% end %>
+<h2>Previously attended events</h2>
+<% @user.attended_events.each do |event| %>
+  <% if event.date < Time.zone.now %>
+    <div>
+      <p>Location: <%= event.location %></p>
+      <p>Date: <%= event.date %></p>
+    </div>
+  <% end %>
+<% end %>
+<h2>Upcoming Events</h2>
+<% @user.attended_events.each do |event| %>
+  <% if event.date > Time.zone.now %>
+    <div>
+      <p>Location: <%= event.location %></p>
+      <p>Date: <%= event.date %></p>
+    </div>
+  <% end %>
+<% end %>

@@ -1,4 +1,12 @@
-<% @events.each do |event| %>
+<h2>Upcoming Events</h2>
+<% @upcoming_events.each do |event| %>
+  <div>
+    <p>Created by: <%= event.creator.name %></p>
+  </div>
+<% end %>
+
+<h2>Past Events</h2>
+<% @past_events.each do |event| %>
   <div>
     <p>Created by: <%= event.creator.name %></p>
   </div>
