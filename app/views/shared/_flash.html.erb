@@ -1,0 +1,8 @@
+<% flash.each do |message_type, message| %>
+  <% banner_color = message_type == 'alert' ? 'danger' : 'primary' %>
+
+  <div class="<%="notification is-#{banner_color}"%>">
+    <p><%= message %></p>
+  </div>
+
+<% end %>

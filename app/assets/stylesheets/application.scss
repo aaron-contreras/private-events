@@ -13,4 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+/*
+Gets rid of flash notification spacing
+*/
+
 @import "bulma";
+
+.notification:not(:last-child) {
+  margin-bottom: 0;
+}
