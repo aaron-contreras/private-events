@@ -14,12 +14,7 @@
   </head>
 
   <body>
-    <% flash.each do |type, message| %>
-      <% banner_color = type == 'alert' ? 'danger' : 'primary' %>
-      <div class="<%="notification is-#{banner_color}"%>">
-        <p><%= message %></p>
-      </div>
-    <% end %>
+    <%= render "shared/flash" %>
     <%= render "shared/header" %>
     <div class="container">
       <div class="columns">

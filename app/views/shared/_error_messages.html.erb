@@ -1,0 +1,12 @@
+<% if object.errors.any? %>
+  <div class="box">
+    <div class="content">
+      <ul>
+        <h3 class="content is-medium">Watch out!</h3>
+        <% object.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
