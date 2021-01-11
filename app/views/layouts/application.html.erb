@@ -8,20 +8,14 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/b4937b662a.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <%= link_to 'Events', events_path %>
-    <%= link_to 'New Event', new_event_path %>
-    <% if signed_in_user %>
-      <%= link_to 'Log out', logout_path %>
-    <% else %>
-      <%= link_to 'Log in', new_session_path %>
-      <%= link_to 'Sign up', new_user_path %>
-    <% end %>
-    <% if signed_in_user %>
-      <p><%= signed_in_user.name %></p>
-    <% end %>
-    <%= yield %>
+    <%= render "shared/header" %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
