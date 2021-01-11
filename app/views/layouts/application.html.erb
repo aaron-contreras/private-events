@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/b4937b662a.js" crossorigin="anonymous"></script>
   </head>
@@ -15,7 +16,13 @@
   <body>
     <%= render "shared/header" %>
     <div class="container">
-      <%= yield %>
+      <div class="columns">
+        <div class="column"></div>
+        <div class="column is-two-thirds">
+          <%= yield %>
+        </div>
+        <div class="column"></div>
+      </div>
     </div>
   </body>
 </html>
