@@ -1,7 +1,15 @@
-<h1>Sign in</h1>
-<%= form_with url: sessions_path do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %> 
+<h2 class="title has-text-centered">Welcome back!</h1>
 
-  <%= f.submit 'Sign in' %>
+<%= form_with url: sessions_path do |f| %>
+  <div class="field">
+    <%= f.label :username, class: 'label' %>
+    <div class="control">
+      <%= f.text_field :username, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <%= f.submit 'Log in', class: 'button is-info' %>
+    </div>
+  </div>
 <% end %>
