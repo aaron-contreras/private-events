@@ -12,7 +12,7 @@
       <li><%= attendee.name %></li>
     <% end %>
     <h3 class="subtitle">Pending</h3>
-    <% @event.invitations.each do |invitation| %>
+    <% @event.invitations.pending.each do |invitation| %>
       <li><%= invitation.invitee.name %></li>
     <% end %>
 
