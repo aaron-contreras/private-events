@@ -1,5 +1,10 @@
-<p>Created by: <%= @event.creator.name %></p>
-<h2>Attendees</h2>
-<% @event.attendees.each do |attendee| %>
-  <p><%= attendee.name %></p>
-<% end %>
+  <h3 class="title has-centered-text"><%= @event.description %></h3>
+  <p>When? <%= @event.date %></p>
+  <p>Where at? <%= @event.location %></p>
+  <p>Host? <%= @event.creator.name %></p>
+  <ul>
+    <h2 class="subtitle">Guest list</h2>
+    <% @event.attendees.each do |attendee| %>
+      <li><%= attendee.name %></li>
+    <% end %>
+  </ul>
