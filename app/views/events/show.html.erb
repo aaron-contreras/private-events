@@ -2,6 +2,9 @@
   <p>When? <%= @event.date %></p>
   <p>Where at? <%= @event.location %></p>
   <p>Host? <%= @event.creator.name %></p>
+  <% if @event.creator == signed_in_user %>
+    <%= link_to 'Invite guests', new_event_invitation_path(@event), class: 'button is-info' %>
+  <% end %>
   <ul>
     <h2 class="subtitle">Guest list</h2>
     <% @event.attendees.each do |attendee| %>

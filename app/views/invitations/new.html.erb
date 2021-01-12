@@ -1,0 +1,9 @@
+<h3 class="title">Send an invitation</h3>
+<%= form_with url: event_invitations_path do |f| %>
+  <%= collection_check_boxes(:invitee,
+                                :id,
+                                User.all_except(signed_in_user),
+                                :id,
+                                :name) %>
+  <%= f.submit %>
+<% end %>

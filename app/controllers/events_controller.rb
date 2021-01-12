@@ -14,7 +14,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = 'Event succesfully created.'
-      redirect_to @event
+      render @event
     else
       flash[:alert] = 'Unsuccessful event creation.'
       render :new
