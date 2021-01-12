@@ -7,7 +7,13 @@
   <% end %>
   <ul>
     <h2 class="subtitle">Guest list</h2>
+    <h3 class="subtitle">Confirmed</h3>
     <% @event.attendees.each do |attendee| %>
       <li><%= attendee.name %></li>
     <% end %>
+    <h3 class="subtitle">Pending</h3>
+    <% @event.invitations.each do |invitation| %>
+      <li><%= invitation.invitee.name %></li>
+    <% end %>
+
   </ul>
