@@ -7,10 +7,6 @@ class Event < ApplicationRecord
 
   validates :description, :date, :location, presence: true
 
-  scope :past, -> { where('date < ?', Time.zone.now) }
+  scope :previous, -> { where('date < ?', Time.zone.now) }
   scope :upcoming, -> { where('date > ?', Time.zone.now) }
-
-  def english_date
-    date.strftime('%m/%d/%Y')
-  end
 end
