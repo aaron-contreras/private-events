@@ -67,7 +67,7 @@ amount_of_events.times do |i|
     
     event.attendees << invitees
 
-    puts 'List of attendees'.
+    puts 'List of attendees'
     puts '==========================='
 
     event.attendees.each do |attendee|
@@ -132,9 +132,3 @@ end
 puts "========================"
 puts "EVENTS HAVE BEEN CREATED."
 puts "========================"
-
-3.times { puts }
-puts "================"
-puts "DATABASE SEEDED."
-puts "================"
-
