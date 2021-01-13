@@ -90,6 +90,8 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubi (1.10.0)
     eventmachine (1.2.7)
+    faker (2.15.1)
+      i18n (>= 1.6, < 2)
     ffi (1.14.2)
     formatador (0.2.5)
     globalid (0.4.2)
@@ -249,6 +251,7 @@ DEPENDENCIES
   bulma-rails (~> 0.9.1)
   byebug
   capybara (>= 3.26)
+  faker (~> 2.15, >= 2.15.1)
   guard-livereload (~> 2.5, >= 2.5.2)
   jbuilder (~> 2.7)
   listen (~> 3.3)
