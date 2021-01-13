@@ -13,4 +13,8 @@ class Event < ApplicationRecord
   def english_date
     date.strftime("%m/%d/%Y")
   end
+
+  def future
+    date > Time.zone.now
+  end
 end

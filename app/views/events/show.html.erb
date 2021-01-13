@@ -1,21 +1,14 @@
-  <div class="box content">
-    <div class="block">
-      <h2 class="title has-text-centered"><%= @event.description %></h3>
-      <p>
-        <strong>When?</strong>
-        <%= distance_of_time_in_words(Time.zone.now, @event.date) %> from now
-        on <%= @event.english_date %></p>
-      <p><strong>Where at?</strong> <%= @event.location %></p>
-      <p><strong>Hosted by:</strong> <%= link_to @event.creator.name, @event.creator %></p>
-      
-      <% if @event.creator == signed_in_user %>
-        <%= link_to 'Invite guests', new_event_invitation_path(@event), class: 'button is-info' %>
-      <% end %>
-    </div>
+<div class="box content">
+  <div class="block">
+    <h2 class="level-item title has-text-centered"><%= @event.description %></h3>
 
-    <div class="block">
-      <%= render partial: "invitations/confirmation", locals: { event: @event } %>
-      <%= render partial: "events/guest_list", locals: { event: @event } %>
-    </div>
-
+    <%= render partial: "events/date", locals: { event: @event } %>
+    <%= render partial: "events/location", locals: { event: @event } %>
+    <%= render partial: "events/host", locals: { event: @event } %>
+    
+    <%= render partial: "events/owner_controls", locals: { event: @event } %>
   </div>
+
+  <%= render partial: "invitations/confirmation", locals: { event: @event } %>
+  <%= render partial: "events/guest_list", locals: { event: @event } %>
+</div>

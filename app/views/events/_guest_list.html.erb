@@ -1,17 +1,19 @@
-<h4 class="subtitle">Guest list</h2>
-<div class="columns">
-  <div class="column">
-    <ol>
-      <% event.attendees.each do |attendee| %>
-        <li><span class="tag is-primary is-light">Confirmed</span> <%= link_to attendee.name, attendee %></li>
-      <% end %>
-    </ol>
-  </div>
-  <div class="column">
-    <ol>
-      <% event.invitations.pending.each do |invitation| %>
-        <li><span class="tag is-warning is-light">Pending</span> <%= invitation.invitee.name %></li>
-      <% end %>
-    </ol>
+<div class="block">
+  <h4 class="subtitle">Guest list</h2>
+  <div class="columns">
+    <div class="column">
+      <ol>
+        <% event.attendees.each do |attendee| %>
+          <li><span class="tag is-primary is-light">Confirmed</span> <%= link_to attendee.name, attendee %></li>
+        <% end %>
+      </ol>
+    </div>
+    <div class="column">
+      <ol>
+        <% event.invitations.pending.each do |invitation| %>
+          <li><span class="tag is-warning is-light">Pending</span> <%= invitation.invitee.name %></li>
+        <% end %>
+      </ol>
+    </div>
   </div>
 </div>

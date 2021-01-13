@@ -1,9 +1,9 @@
-<h2>Upcoming Events</h2>
+<h2 class="title has-text-centered">Upcoming Events</h2>
 <div class="columns is-multiline">
   <%= render @upcoming_events, locals: { event: @upcoming_events } %>
 </div>
 
-<h2>Past Events</h2>
+<h2 class="title has-text-centered">Past Events</h2>
 <div class="columns is-multiline">
-  <%= render @past_events, locals: { event: @upcoming_events } %>
+  <%= render @past_events, locals: { event: @past_events } %>
 </div>

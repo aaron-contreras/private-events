@@ -1,19 +1,8 @@
 <h2 class="title has-text-centered"><%= @user.name %>'s page</h2>
 <h2 class="subtitle has-text-centered">aka: <%= @user.username %></h2>
 
-<% if @user.events.any? %>
-  <div class="box has-background-primary-light">
-    <h3 class="title has-text-centered">Hosted events</h3>
-    <div class="columns is-multiline">
-        <% @user.events.each do |event| %>
-          <%= render event, locals: { event: event } %>
-        <% end %>
-    </div>
-  </div>
-<% end%>
-
 <% if @user == signed_in_user && @user.invitations.reject(&:accepted).any? %>
-  <div class="box">
+  <div class="box has-background-warning-light">
     <h3 class="title has-text-centered">You've been invited to</h3>
     <div class="columns is-multiline">
       <% Invitation.confirmation_missing(@user).each do |invitation| %>
@@ -23,23 +12,33 @@
   </div>
 <% end %>
 
+<% if @user.events.any? %>
+  <div class="box">
+    <h3 class="title has-text-centered">Hosted events</h3>
+    <div class="columns is-multiline">
+        <% @user.events.each do |event| %>
+          <%= render event, locals: { event: event } %>
+        <% end %>
+    </div>
+  </div>
+<% end%>
 
-<% if @user.events.upcoming.any? %>
-  <div class="box has-background-info-light">
+<% if @user.attended_events.upcoming.any? %>
+  <div class="box">
     <h3 class="title has-text-centered">Will be attending these</h3>
     <div class="columns is-multiline">
-      <% @user.events.upcoming.each do |event| %>
+      <% @user.attended_events.upcoming.each do |event| %>
         <%= render partial: 'events/event', locals: { event: event } %>
       <% end %>
     </div>
   </div>
 <% end %>
 
-<% if @user.events.previous.any? %>
-  <div class="box has-background-white-ter">
+<% if @user.attended_events.previous.any? %>
+  <div class="box has-background-light">
     <h3 class="title has-text-centered">Has attended these</h3>
     <div class="columns is-multiline">
-      <% @user.events.previous.each do |event| %>
+      <% @user.attended_events.previous.each do |event| %>
         <%= render partial: 'events/event', locals: { event: event } %>
       <% end %>
     </div>

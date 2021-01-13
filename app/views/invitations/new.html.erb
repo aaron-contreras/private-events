@@ -6,10 +6,9 @@
     </div>
   
     <div class="field">
-      <% debugger %>
       <%= collection_check_boxes(:invitee,
                                     :id,
-                                    User.yet_to_be_invited_to(@event),
+                                    User.all_except(signed_in_user).yet_to_be_invited_to(@event),
                                     :id,
                                     :name) do |c| %>
           <div class="field">

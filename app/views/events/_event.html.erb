@@ -4,9 +4,14 @@
       <p class="card-header-title"><%= event.creator.name %>'s event</p>
     </div>
     <div class="card-content">
-      <p><%= event.description %></p>
-      <p>When? <%= distance_of_time_in_words(Time.zone.now, event.date) %></p>
-      <p>Where at? <%= event.location %></p>
+      <strong>When?</strong>
+      <% if event.future %>
+        <p>in <%= distance_of_time_in_words(Time.zone.now, event.date) %>.</p>
+      <% else %>
+        <p><%= distance_of_time_in_words(Time.zone.now, event.date) %> ago.</p>
+      <% end %>
+      <strong>Where at?</strong>
+      <p><%= event.location %>.</p>
     </div>
     <div class="card-footer">
       <%= link_to 'More info', event_path(event),

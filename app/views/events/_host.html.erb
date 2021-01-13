@@ -1,0 +1,4 @@
+<p>
+  <strong>Hosted by:&nbsp;</strong>
+  <%= link_to event.creator == signed_in_user ? 'You' : event.creator.name, event.creator %>
+</p>

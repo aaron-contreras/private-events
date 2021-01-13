@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
+
   def index
     @past_events = Event.previous
     @upcoming_events = Event.upcoming
@@ -9,20 +11,32 @@ class EventsController < ApplicationController
   end
 
   def create
-    user = User.find(session[:user_id])
-    @event = user.events.build(event_params)
+    @event = current_user.events.build(event_params)
 
     if @event.save
       flash[:success] = 'Event succesfully created.'
       render @event
     else
-      flash[:alert] = 'Unsuccessful event creation.'
+      flash.now[:alert] = 'Unsuccessful event creation.'
       render :new
     end
   end
   
   def show
     @event = Event.includes(:invitations, :attendees).find(params[:id])
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+
+    if current_user == @event.creator
+      @event.destroy
+      flash[:success] = 'Event succesfully cancelled.'
+      redirect_to current_user
+    else
+      flash.now[:alert] = 'You are not allowed to cancel this event.'
+      render :show
+    end
   end
 
   private

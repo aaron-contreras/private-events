@@ -5,9 +5,7 @@ class InvitationsController < ApplicationController
 
   def create
     @event = get_event
-    @invitations = cleaned_check_box_list.map do |id|
-      Invitation.new(invitee: User.find(id), event: @event)
-    end
+    @invitations = invitations_from_check_boxes
 
     if @invitations.any?
       @event.invitations << @invitations
@@ -29,15 +27,17 @@ class InvitationsController < ApplicationController
     elsif params[:status] == 'decline'
       @invitation.destroy
     end
-
+     
     redirect_to @event
   end
 
   private
 
   # Collection check boxes return an empty first element
-  def cleaned_check_box_list
-    params[:invitee][:id][1..-1]
+  def invitations_from_check_boxes
+    params[:invitee][:id][1..-1].map do |id|
+      Invitation.new(invitee: User.find(id), event: @event)
+    end
   end
 
   def get_event
