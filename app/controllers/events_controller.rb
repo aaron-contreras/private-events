@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   end
   
   def show
-    @event = Event.find(params[:id])
+    @event = Event.includes(:invitations, :attendees).find(params[:id])
   end
 
   private

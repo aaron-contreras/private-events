@@ -1,13 +1,23 @@
-<h1>Profile</h1>
-<p>Name: <%= @user.name %></p>
-<p>Username: <%= @user.username %></p>
-<h2>Events</h2>
+<p class="title"><%= @user.name %>'s page</p>
+<p class="subtitle">aka: <%= @user.username %></p>
+<h2>Host of</h2>
 <% @user.events.each do |event| %>
   <div>
     <p>Location: <%= event.location %></p>
     <p>Date: <%= event.date %></p>
   </div>
 <% end %>
+
+<% if @user == signed_in_user %>
+<h2>You've been invited to</h2>
+<ul>
+  <% Invitation.confirmation_missing(@user).each do |invitation| %>
+    <%= render partial: "events/event", locals: { invitation: invitation } %>
+  <% end %>
+</ul>
+<% end %>
+
+
 <h2>Previously attended events</h2>
 <% @user.attended_events.each do |event| %>
   <% if event.date < Time.zone.now %>

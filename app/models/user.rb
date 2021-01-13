@@ -8,5 +8,5 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
 
-  scope :all_except, ->(user) { where.not(id: user) }
+  scope :yet_to_be_invited_to, ->(event) { where.not(id: event.invitations.map(&:invitee)) }
 end

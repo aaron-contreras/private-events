@@ -1,0 +1,10 @@
+<% if event.invitations.pending.map(&:invitee).include?(signed_in_user) %>
+  <%= link_to 'RSVP', event_invitation_path(event,
+                                            Invitation.for(event, signed_in_user),
+                                            status: :confirm),
+                      method: :patch %> 
+  <%= link_to 'Decline', event_invitation_path(event,
+                                               Invitation.for(event, signed_in_user),
+                                               status: :decline),
+                         method: :patch %>
+<% end %>

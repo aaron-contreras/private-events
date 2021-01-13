@@ -11,6 +11,6 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where('date > ?', Time.zone.now) }
 
   def english_date
-    date.strftime('%A, %B %d, %Y')
+    date.strftime('%m/%d/%Y')
   end
 end

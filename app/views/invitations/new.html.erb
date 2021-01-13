@@ -1,9 +1,22 @@
-<h3 class="title">Send an invitation</h3>
-<%= form_with url: event_invitations_path do |f| %>
-  <%= collection_check_boxes(:invitee,
-                                :id,
-                                User.all_except(signed_in_user),
-                                :id,
-                                :name) %>
-  <%= f.submit %>
-<% end %>
+<h3 class="title has-text-centered">Invite people over!</h3>
+<div class="box">
+  <%= form_with url: event_invitations_path do |f| %>
+    <div class="field">
+      <%= f.submit 'Send invitations', class: 'button is-info' %>
+    </div>
+  
+    <div class="field">
+      <% debugger %>
+      <%= collection_check_boxes(:invitee,
+                                    :id,
+                                    User.yet_to_be_invited_to(@event),
+                                    :id,
+                                    :name) do |c| %>
+          <div class="field">
+            <%= c.check_box %>
+            <%= c.label class: 'checkbox' %>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,19 +1,21 @@
-  <h3 class="title has-centered-text"><%= @event.description %></h3>
-  <p>When? <%= @event.date %></p>
-  <p>Where at? <%= @event.location %></p>
-  <p>Host? <%= @event.creator.name %></p>
-  <% if @event.creator == signed_in_user %>
-    <%= link_to 'Invite guests', new_event_invitation_path(@event), class: 'button is-info' %>
-  <% end %>
-  <ul>
-    <h2 class="subtitle">Guest list</h2>
-    <h3 class="subtitle">Confirmed</h3>
-    <% @event.attendees.each do |attendee| %>
-      <li><%= attendee.name %></li>
-    <% end %>
-    <h3 class="subtitle">Pending</h3>
-    <% @event.invitations.pending.each do |invitation| %>
-      <li><%= invitation.invitee.name %></li>
-    <% end %>
+  <div class="box content">
+    <div class="block">
+      <h2 class="title has-text-centered"><%= @event.description %></h3>
+      <p>
+        <strong>When?</strong>
+        <%= distance_of_time_in_words(Time.zone.now, @event.date) %> from now
+        on <%= @event.english_date %></p>
+      <p><strong>Where at?</strong> <%= @event.location %></p>
+      <p><strong>Hosted by:</strong> <%= link_to @event.creator.name, @event.creator %></p>
+      
+      <% if @event.creator == signed_in_user %>
+        <%= link_to 'Invite guests', new_event_invitation_path(@event), class: 'button is-info' %>
+      <% end %>
+    </div>
 
-  </ul>
+    <div class="block">
+      <%= render partial: "invitations/confirmation", locals: { event: @event } %>
+      <%= render partial: "events/guest_list", locals: { event: @event } %>
+    </div>
+
+  </div>

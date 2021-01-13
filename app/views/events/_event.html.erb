@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="card-header">
+    <p class="card-header-title"><%= invitation.event.creator.name %>'s event</p>
+  </div>
+  <div class="card-content">
+    <p><%= invitation.event.description %></p>
+    <p>When? <%= invitation.event.date %></p>
+    <p>Where at? <%= invitation.event.location %></p>
+  </div>
+  <div class="card-footer">
+    <%= link_to 'More info', event_path(invitation.event),
+                             class: 'card-footer-item' %>
+  </div>
+</div>
